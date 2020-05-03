@@ -11,13 +11,6 @@ import Employee from './components/employee/Employee';
 import SignUp from './components/signup/SignUp';
 
 class App extends Component {
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-            loginError: false
-        }
-    }
     
     componentDidMount() {
         const clientId = 175
@@ -29,7 +22,7 @@ class App extends Component {
             <Router>
                 <div>
                     <Switch>
-                        <Route exact path="/" error={this.state.loginError}>
+                        <Route exact path="/">
                             <Login />
                         </Route>
                         <Route path="/home">

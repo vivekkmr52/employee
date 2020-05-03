@@ -19,18 +19,13 @@ class Employee extends Component {
         
         axios.interceptors.response.use(
             response => response,
-          error => {
-            this.setState({
-                loginError: true
-            })
-            const { history } = this.props;
-            history.push("/")
-            console.log('Error from router')
-            localStorage.removeItem('userid')
-            // const {status} = error.response;
-            // if (status === 400 ) {
-            //   store.dispatch('snackBar', snackbarObj)
-            // } 
+          error => {            
+            const {status} = error.response;
+            if (status === 400 ) {
+                const { history } = this.props;
+                history.push("/")
+                localStorage.removeItem('userid')
+            } 
            return Promise.reject(error);
           }
         )
